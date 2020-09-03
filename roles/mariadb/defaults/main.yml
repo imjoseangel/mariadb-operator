@@ -1,2 +1,4 @@
 ---
 # defaults file for MariaDB
+size: 1
+mariadb_pwd: password
