@@ -1,0 +1,6 @@
+apiVersion: mariadb.example.com/v1
+kind: MariaDB
+metadata:
+  name: mariadb-sample
+spec:
+  foo: bar

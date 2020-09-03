@@ -1,0 +1,36 @@
+---
+# tasks file for MariaDB
+- name: start MariaDB
+  community.kubernetes.k8s:
+    definition:
+      kind: Deployment
+      apiVersion: apps/v1
+      metadata:
+        name: '{{ ansible_operator_meta.name }}-mariadb'
+        namespace: '{{ ansible_operator_meta.namespace }}'
+      spec:
+        replicas: "{{ size }}"
+        selector:
+          matchLabels:
+            app: mariadb
+        template:
+          metadata:
+            labels:
+              app: mariadb
+          spec:
+            containers:
+            - name: mariadb
+              image: "docker.io/mariadb:latest"
+              imagePullPolicy: "Always"
+              env:
+              - name: MYSQL_ROOT_PASSWORD
+                value: password
+              ports:
+              - containerPort: 3306
+              volumeMounts:
+              - mountPath: /var/lib/mysql
+                name: mariadb-data
+            volumes:
+            - name: mariadb-data
+              persistentVolumeClaim:
+                claimName: px-mariadb-pvc

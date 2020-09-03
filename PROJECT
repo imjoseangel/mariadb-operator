@@ -1,0 +1,8 @@
+domain: example.com
+layout: ansible.sdk.operatorframework.io/v1
+projectName: mariadb-operator
+resources:
+- group: mariadb
+  kind: MariaDB
+  version: v1
+version: 3-alpha
