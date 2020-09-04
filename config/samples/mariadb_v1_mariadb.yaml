@@ -3,4 +3,5 @@ kind: MariaDB
 metadata:
   name: mariadb-sample
 spec:
-  foo: bar
+  size: 3
+  mariadb_pwd: password
