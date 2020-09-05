@@ -41,6 +41,9 @@ spec:
                 description: Size is the size of the deployment
                 format: int32
                 type: integrer
+            required:
+            - password
+            - size
           status:
             description: Status defines the observed state of MariaDB
             type: object
