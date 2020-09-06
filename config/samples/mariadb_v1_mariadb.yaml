@@ -4,4 +4,4 @@ metadata:
   name: mariadb-sample
 spec:
   size: 1
-  mariadb_pwd: password
+  mariadbpass: password

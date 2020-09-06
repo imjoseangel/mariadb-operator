@@ -34,7 +34,7 @@ spec:
             type: object
             x-kubernetes-preserve-unknown-fields: true
             properties:
-              password:
+              mariadbpass:
                 description: Database additional user password (base64 encoded)
                 type: string
               size:
@@ -42,7 +42,7 @@ spec:
                 format: int32
                 type: integrer
             required:
-            - password
+            - mariadbpass
             - size
           status:
             description: Status defines the observed state of MariaDB
