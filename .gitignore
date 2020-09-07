@@ -1,0 +1,6 @@
+### Sandbox: anything in that directory will be ignored
+sandbox/
+
+### Collections: Ansible collections installed here will be ignored
+
+collections/
