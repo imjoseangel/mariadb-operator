@@ -1,4 +1,4 @@
-domain: example.com
+domain: operator
 layout: ansible.sdk.operatorframework.io/v1
 projectName: mariadb-operator
 resources:

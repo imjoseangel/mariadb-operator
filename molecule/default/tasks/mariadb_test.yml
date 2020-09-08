@@ -1,5 +1,5 @@
 ---
-- name: Create the mariadb.example.com/v1.MariaDB
+- name: Create the mariadb.operator/v1.MariaDB
   k8s:
     state: present
     namespace: '{{ namespace }}'

@@ -1,4 +1,4 @@
-apiVersion: mariadb.example.com/v1
+apiVersion: mariadb.operator/v1
 kind: MariaDB
 metadata:
   name: mariadb-sample
