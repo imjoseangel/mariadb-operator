@@ -40,7 +40,7 @@ spec:
               size:
                 description: Size is the size of the deployment
                 format: int32
-                type: integrer
+                type: integer
             required:
             - mariadbpass
             - size
