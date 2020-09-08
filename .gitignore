@@ -2,5 +2,4 @@
 sandbox/
 
 ### Collections: Ansible collections installed here will be ignored
-
 collections/
