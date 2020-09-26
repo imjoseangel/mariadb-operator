@@ -6,13 +6,13 @@
       apiVersion: v1
       metadata:
         name: px-mariadb-pvc
-        namespace: '{{ ansible_operator_meta.namespace }}'
+        namespace: "{{ ansible_operator_meta.namespace }}"
       spec:
         accessModes:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 1Gi
+            storage: "{{ mariadb_pvc_storage_request }}"
 
 - name: start MariaDB
   community.kubernetes.k8s:
@@ -23,7 +23,7 @@
         name: '{{ ansible_operator_meta.name }}-mariadb'
         namespace: '{{ ansible_operator_meta.namespace }}'
       spec:
-        replicas: "{{ size }}"
+        replicas: "{{ replicas }}"
         selector:
           matchLabels:
             app: mariadb

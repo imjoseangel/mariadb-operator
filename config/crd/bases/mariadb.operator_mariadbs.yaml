@@ -37,13 +37,17 @@ spec:
               mariadbpass:
                 description: Database additional user password (base64 encoded)
                 type: string
-              size:
-                description: Size is the size of the deployment
+              replicas:
+                description: Number of replicas in the deployment
                 format: int32
                 type: integer
+              mariadb_pvc_storage_request:
+                description: Size of the PVC
+                type: string
             required:
             - mariadbpass
-            - size
+            - replicas
+            - mariadb_pvc_storage_request
           status:
             description: Status defines the observed state of MariaDB
             type: object

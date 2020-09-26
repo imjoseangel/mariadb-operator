@@ -10,3 +10,10 @@ Creating the operator:
 operator-sdk init --plugins=ansible --domain operator
 operator-sdk create api --group mariadb --version v1 --kind MariaDB --generate-role
 ```
+
+To connect to the mariadb Database run:
+
+```sh
+POD=`kubectl get pods -n mariadb-operator -l app=mariadb | grep Running | grep 1/1 | awk '{print $1}'`
+kubectl exec -n mariadb-operator -it $POD -- mysql -uroot -ppassword
+```
