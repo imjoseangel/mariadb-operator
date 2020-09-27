@@ -23,3 +23,31 @@ Build the operator
 ```sh
 make docker-build docker-push IMG=imjoseangel/mariadb-operator:v1.0.0
 ```
+
+Deploy de operator
+
+```sh
+make install
+make deploy IMG=imjoseangel/mariadb-operator:v1.0.0
+```
+
+Verify status:
+
+```sh
+kubectl get deployment -n mariadb-operator-system
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+mariadb-operator-controller-manager   1/1     1            1           8s
+```
+
+View the Ansible Logs:
+
+```sh
+kubectl logs deployment/mariadb-operator-controller-manager -n mariadb-operator-system manager -f
+```
+
+Deploy MariaDB
+
+```sh
+kubectl apply -f config/samples/mariadb_v1_mariadb.yaml
+```
