@@ -17,3 +17,9 @@ To connect to the mariadb Database run:
 POD=`kubectl get pods -n mariadb-operator -l app=mariadb | grep Running | grep 1/1 | awk '{print $1}'`
 kubectl exec -n mariadb-operator -it $POD -- mysql -uroot -ppassword
 ```
+
+Build the operator
+
+```sh
+make docker-build docker-push IMG=imjoseangel/mariadb-operator:v1.0.0
+```
