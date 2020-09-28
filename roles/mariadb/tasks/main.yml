@@ -48,3 +48,21 @@
             - name: mariadb-data
               persistentVolumeClaim:
                 claimName: px-mariadb-pvc
+
+---
+- name: Create service
+  community.kubernetes.k8s:
+    definition:
+      kind: Service
+      apiVersion: v1
+      metadata:
+        name: '{{ ansible_operator_meta.name }}-mariadb'
+        namespace: '{{ ansible_operator_meta.namespace }}'
+        labels:
+          app: mariadb
+      spec:
+        ports:
+        - port: 3306
+        clusterIP: None
+        selector:
+          app: mariadb
