@@ -49,7 +49,6 @@
               persistentVolumeClaim:
                 claimName: px-mariadb-pvc
 
----
 - name: Create service
   community.kubernetes.k8s:
     definition:
