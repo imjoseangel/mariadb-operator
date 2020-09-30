@@ -17,7 +17,7 @@
 - name: start MariaDB
   community.kubernetes.k8s:
     definition:
-      kind: Deployment
+      kind: StatefulSet
       apiVersion: apps/v1
       metadata:
         name: '{{ ansible_operator_meta.name }}-mariadb'
