@@ -27,6 +27,7 @@
         selector:
           matchLabels:
             app: mariadb
+        serviceName: '{{ ansible_operator_meta.name }}-mariadb'
         strategy:
           rollingUpdate:
             maxSurge: 1
@@ -40,12 +41,27 @@
             containers:
             - name: mariadb
               image: "docker.io/mariadb:latest"
-              imagePullPolicy: "Always"
+              imagePullPolicy: Always
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 100Mi
               env:
               - name: MYSQL_ROOT_PASSWORD
                 value: "{{ mariadbpass }}"
               ports:
-              - containerPort: 3306
+              - name: mariadb
+                containerPort: 3306
+              livenessProbe:
+                tcpSocket:
+                  port: mariadb
+                initialDelaySeconds: 10
+                timeoutSeconds: 5
+              readinessProbe:
+                tcpSocket:
+                  port: mariadb
+                initialDelaySeconds: 5
+                timeoutSeconds: 2
               volumeMounts:
               - mountPath: /var/lib/mysql
                 name: mariadb-data
