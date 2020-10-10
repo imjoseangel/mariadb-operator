@@ -6,6 +6,7 @@
       apiVersion: v1
       metadata:
         name: '{{ ansible_operator_meta.name }}-mariadb'
+        namespace: "{{ ansible_operator_meta.namespace }}"
         labels:
           app: mariadb
       data:
