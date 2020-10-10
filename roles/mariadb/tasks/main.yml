@@ -1,4 +1,23 @@
 ---
+- name: Configuration Configmap
+  community.kubernetes.k8s:
+    definition:
+      kind: ConfigMap
+      apiVersion: v1
+      metadata:
+        name: '{{ ansible_operator_meta.name }}-mariadb'
+        labels:
+          app: mariadb
+      data:
+        master.cnf: |
+          # Apply this config only on the master.
+          [mysqld]
+          log-bin
+        slave.cnf: |
+          # Apply this config only on slaves.
+          [mysqld]
+          super-read-only
+
 - name: Create pvc
   community.kubernetes.k8s:
     definition:
