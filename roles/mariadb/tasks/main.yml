@@ -1,5 +1,5 @@
 ---
-- name: Configuration Configmap
+- name: Create Configmap
   community.kubernetes.k8s:
     definition:
       kind: ConfigMap
