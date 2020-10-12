@@ -77,19 +77,19 @@
               app: mariadb
           spec:
             containers:
-            - name: mariadb-master
+            - name: mariadb
               image: "docker.io/mariadb:latest"
               imagePullPolicy: Always
-              resources:
-                requests:
-                  cpu: 100m
-                  memory: 100Mi
               env:
               - name: MYSQL_ROOT_PASSWORD
                 value: "{{ mariadbpass }}"
               ports:
               - name: mariadb
                 containerPort: 3306
+              resources:
+                requests:
+                  cpu: 500m
+                  memory: 1Gi
               livenessProbe:
                 tcpSocket:
                   port: mariadb
