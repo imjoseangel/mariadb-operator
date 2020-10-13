@@ -61,7 +61,7 @@
         name: '{{ ansible_operator_meta.name }}-mariadb'
         namespace: '{{ ansible_operator_meta.namespace }}'
       spec:
-        replicas: "{{ replicas }}"
+        replicas: "{{ masters }}"
         selector:
           matchLabels:
             app: mariadb
